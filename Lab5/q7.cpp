@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+int nearValue(int a, int b) {
+    if (abs(a) <= abs(b)) return a;
+    else return b;
+}
+float nearValue(float a, float b) {
+    if (fabs(a) <= fabs(b))
+        return a;
+    else
+        return b;
+}
+int nearValue(int arr[], int size) {
+    int nearest = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (abs(arr[i]) < abs(nearest))
+            nearest = arr[i];
+    }
+
+    return nearest;
+}
+int main() {
+    int a, b;
+    cout << "Enter two integers: ";
+    cin >> a >> b;
+    cout << "Integer nearest to zero = "
+         << nearValue(a, b) << endl;
+
+    float x, y;
+
+    cout << "\nEnter two floating-point values: ";
+    cin >> x >> y;
+
+    cout << "Float nearest to zero = "
+         << nearValue(x, y) << endl;
+
+    int n;
+
+    cout << "\nEnter size of array: ";
+    cin >> n;
+
+    int arr[n];
+
+    cout << "Enter array elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    cout << "Array element nearest to zero = "
+         << nearValue(arr, n) << endl;
+
+    return 0;
+}
